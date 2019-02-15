@@ -1,0 +1,98 @@
+{
+	"name": "tagmgr",
+	"displayName": "Tagmgr",
+	"description": "Tagmgr plugin for vscode.",
+	"keywords": [
+		"vscode",
+		"plugin",
+		"tagmgr",
+		"gtags",
+		"cscope",
+		"ctags"
+	],
+	"version": "0.0.1",
+	"publisher": "yuchang",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Other",
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"workspaceContains:**/*.{adb,ads,Ada,ada,build.xml,ant,xml,asc,adoc,asciidoc,asm,ASM,s,S,asp,asa,ac,au3,AU3,aU3,Au3,am,awk,gawk,mawk,bas,bi,bb,pb,bet,clj,cljs,cljc,cmake,c,c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx,inl,css,cs,ctags,cbl,cob,CBL,COB,cu,cuh,d,di,diff,patch,dtd,mod,dts,dtsi,bat,cmd,e,elm,erl,ERL,hrl,HRL,fal,ftd,as,mxml,f,for,ftn,f77,f90,f95,f03,f08,f15,fy,gdb,go,htm,html,ini,conf,itcl,java,properties,js,jsx,json,lds,scr,ld,cl,clisp,el,l,lisp,lsp,lua,m4,spt,1,2,3,4,5,6,7,8,9,3pm,3stap,7stap,mak,mk,md,markdown,m,myr,mm,m,h,c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx,inl,c,ml,mli,aug,p,pas,pl,pm,ph,plx,perl,p6,pm6,pm,pl6,php,php3,php4,php5,php7,phtml,pod,proto,pp,py,pyx,pxd,pxi,scons,wsgi,hx,r,R,s,q,cmd,rexx,rx,robot,spec,rest,reST,rst,rb,ruby,rs,SCM,SM,sch,scheme,scm,sm,sh,SH,bsh,bash,ksh,zsh,ash,sl,sml,sig,sql,unit,service,socket,device,mount,automount,swap,target,path,timer,snapshot,scope,slice,time,tcl,tk,wish,exp,tex,ttcn,ttcn3,vr,vri,vrh,v,sv,svh,svi,vhdl,vhd,vim,vba,rc,y,repo,zep,xml,glade,pom,xml,plist,rng,svg,xsl,xslt}"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": [
+			{
+				"type": "object",
+				"title": "Tagmgr",
+				"properties": {
+					"tagmgr.path.conf": {
+						"type": "string",
+						"default": "",
+						"description": "Specify the path of this configuration file."
+					},
+					"tagmgr.path.files": {
+						"type": "string",
+						"default": "",
+						"description": "Specify the path of the file recording the list of candidates of target files."
+					},
+					"tagmgr.path.gtags": {
+						"type": "string",
+						"default": "gtags",
+						"description": "Specify the path to the gtags."
+					},
+					"tagmgr.path.global": {
+						"type": "string",
+						"default": "global",
+						"description": "Specify the path to the global."
+					},
+					"tagmgr.encode.term": {
+						"type": "string",
+						"default": "utf-8",
+						"description": "Specify the encoding of the command line output."
+					},
+					"tagmgr.param.label": {
+						"type": "string",
+						"default": "default",
+						"description": "Custom the configuration scheme of all parsers."
+					},
+					"tagmgr.param.caseless": {
+						"type": "boolean",
+						"default": false,
+						"description": "Ignore case distinctions in the pattern."
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "extension.buildTags",
+				"title": "Tagmgr: Build Tags"
+			},
+			{
+				"command": "extension.updateTags",
+				"title": "Tagmgr: Update Tags"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"iconv-lite": "^0.4.24"
+	}
+}
