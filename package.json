@@ -15,6 +15,10 @@
 	"engines": {
 		"vscode": "^1.30.0"
 	},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yuchang668/vscode-tagmgr.git"
+    },
 	"categories": [
 		"Other",
 		"Programming Languages"
