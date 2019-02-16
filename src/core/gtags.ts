@@ -49,9 +49,9 @@ export default class Gtags extends Executable {
         let flist = args.length ? args.slice().map(fpath => path.resolve(this.dbpath, path.normalize(fpath))) : await this.global.getpaths();
         let fhash: { [propName: string]: string[] } = {};
         let gentagfile = async (name: string) => {
-            let fpath = path.join(this.dbpath, name + '.path');
-            let ftags = path.join(this.dbpath, name + '.tags');
-            let ftemp = path.join(this.dbpath, name + '.temp');
+            let fpath = path.join(this.dbpath, 'path-' + name);
+            let ftags = path.join(this.dbpath, 'tags-' + name);
+            let ftemp = path.join(this.dbpath, 'temp-' + name);
             let flist = fhash[name];
             try {
                 let stat = await fsp.stat(ftemp);
@@ -121,6 +121,7 @@ export default class Gtags extends Executable {
     }
 
     public async updateTag(fpath: string) {
+        if (path.normalize(fpath).startsWith(this.dbpath)) { return; }
         await this.gtags(['--single-update', fpath]);
         await this.gentags(fpath);
     }

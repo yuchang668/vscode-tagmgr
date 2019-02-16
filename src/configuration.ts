@@ -39,10 +39,6 @@ export default class Configuration {
     }
 
     public getDatabasePath() {
-        return path.join(this.getProjectPath(), '.tagmgr');
-    }
-
-    public inDatabaseDirectory(fpath: string) {
-        return path.normalize(fpath).startsWith(this.getDatabasePath());
+        return path.resolve(this.getProjectPath(), this.getConfiguration().get<string>('tagmgr.path.database', '.tagmgr'));
     }
 }

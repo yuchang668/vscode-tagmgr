@@ -18,9 +18,9 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
 	subscriptions.push(vscode.commands.registerCommand('extension.buildTags', () => statusBar.sync(true)));
 
 	let fswatcher = vscode.workspace.createFileSystemWatcher(extpatn);
-	fswatcher.onDidCreate(event => config.inDatabaseDirectory(event.fsPath) || statusBar.sync(event.fsPath));
-	fswatcher.onDidChange(event => config.inDatabaseDirectory(event.fsPath) || statusBar.sync(event.fsPath));
-	fswatcher.onDidDelete(event => config.inDatabaseDirectory(event.fsPath) || statusBar.sync(event.fsPath));
+	fswatcher.onDidCreate(event => statusBar.sync(event.fsPath));
+	fswatcher.onDidChange(event => statusBar.sync(event.fsPath));
+	fswatcher.onDidDelete(event => statusBar.sync(event.fsPath));
 	subscriptions.push(fswatcher);
 	subscriptions.push(vscode.languages.registerDefinitionProvider({ scheme: 'file', pattern: extpatn }, new DefinitionProvider(config)));
 	subscriptions.push(vscode.languages.registerReferenceProvider({ scheme: 'file', pattern: extpatn }, new ReferenceProvider(config)));

@@ -45,7 +45,7 @@ export default class Global extends Executable {
             throw new Error('Not found dbpath');
         }
         let { stdout, stderr } = await this.exec(args, this.dbpath);
-        return { stdout: stdout.trim().split(/\r?\n/).filter(line => line.trim().length), stderr: stderr.trim().split(/\r?\n/).filter(line => line.trim().length) };
+        return { stdout: stdout.trim().split(/\r?\n/), stderr: stderr.trim().split(/\r?\n/) };
     }
 
     private async findtags(args: ReadonlyArray<string> = []) {
@@ -84,13 +84,13 @@ export default class Global extends Executable {
 
     public async dumptags(fpath: string | ReadonlyArray<string>, fmt: Format = Format.PATH) {
         let args = ['--file', '--result', fmt];
-        if (<string>fpath) {
+        if (typeof fpath === 'string') {
             args.push('--file-list');
         }
         let { stdout } = await this.global(args.concat(fpath));
         return stdout.sort((a, b) => {
-            a = a.toLowerCase();
-            b = b.toLowerCase();
+            a = a.toUpperCase();
+            b = b.toUpperCase();
             return a === b ? 0 : a < b ? -1 : 1;
         });
     }

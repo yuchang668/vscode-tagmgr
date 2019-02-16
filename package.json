@@ -15,10 +15,10 @@
 	"engines": {
 		"vscode": "^1.30.0"
 	},
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/yuchang668/vscode-tagmgr.git"
-    },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yuchang668/vscode-tagmgr.git"
+	},
 	"categories": [
 		"Other",
 		"Programming Languages"
@@ -28,51 +28,53 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"configuration": [
-			{
-				"type": "object",
-				"title": "Tagmgr",
-				"properties": {
-					"tagmgr.path.conf": {
-						"type": "string",
-						"default": "",
-						"description": "Specify the path of this configuration file."
-					},
-					"tagmgr.path.files": {
-						"type": "string",
-						"default": "",
-						"description": "Specify the path of the file recording the list of candidates of target files."
-					},
-					"tagmgr.path.gtags": {
-						"type": "string",
-						"default": "gtags",
-						"description": "Specify the path to the gtags."
-					},
-					"tagmgr.path.global": {
-						"type": "string",
-						"default": "global",
-						"description": "Specify the path to the global."
-					},
-					"tagmgr.encode.term": {
-						"type": "string",
-						"default": "utf-8",
-						"description": "Specify the encoding of the command line output."
-					},
-					"tagmgr.param.label": {
-						"type": "string",
-						"default": "default",
-						"description": "Custom the configuration scheme of all parsers."
-					},
-					"tagmgr.param.caseless": {
-						"type": "boolean",
-						"default": false,
-						"description": "Ignore case distinctions in the pattern."
-					}
+		"configuration": [{
+			"type": "object",
+			"title": "Tagmgr",
+			"properties": {
+				"tagmgr.path.conf": {
+					"type": "string",
+					"default": "",
+					"description": "Specify the path of this configuration file."
+				},
+				"tagmgr.path.files": {
+					"type": "string",
+					"default": "",
+					"description": "Specify the path of the file recording the list of candidates of target files."
+				},
+				"tagmgr.path.gtags": {
+					"type": "string",
+					"default": "gtags",
+					"description": "Specify the path of the gtags."
+				},
+				"tagmgr.path.global": {
+					"type": "string",
+					"default": "global",
+					"description": "Specify the path of the global."
+				},
+				"tagmgr.path.database": {
+					"type": "string",
+					"default": ".tagmgr",
+					"description": "Specify the path of the database."
+				},
+				"tagmgr.encode.term": {
+					"type": "string",
+					"default": "utf-8",
+					"description": "Specify the encoding of the command line output."
+				},
+				"tagmgr.param.label": {
+					"type": "string",
+					"default": "default",
+					"description": "Custom the configuration scheme of all parsers."
+				},
+				"tagmgr.param.caseless": {
+					"type": "boolean",
+					"default": false,
+					"description": "Ignore case distinctions in the pattern."
 				}
 			}
-		],
-		"commands": [
-			{
+		}],
+		"commands": [{
 				"command": "extension.buildTags",
 				"title": "Tagmgr: Build Tags"
 			},
